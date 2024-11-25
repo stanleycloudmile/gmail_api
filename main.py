@@ -117,6 +117,8 @@ if __name__ == '__main__':
 
     service = create_service(client_secret_file, API_SERVICE_NAME, API_VERSION, SCOPES)
     messages = get_email_messages(service, max_results=max_result, q=query)
+    
+    print(f"total count: {len(messages)}")
 
     for msg in messages:
         details = get_message_details(service, msg['id'])
