@@ -1,0 +1,5 @@
+{
+    "client_secret_file" : "token.json",
+    "max_result" : 500,
+    "query" : "after:2024-11-20"
+}
