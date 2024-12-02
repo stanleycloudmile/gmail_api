@@ -65,7 +65,7 @@ def get_email_messages(service, user_id='me', label_ids=None, folder_name='INBOX
     while True:
         result = service.users().messages().list(
             userId=user_id,
-            labelIds=label_ids,
+            # labelIds=label_ids,
             maxResults=min(500, max_results-len(messages) if max_results else 500),
             pageToken=next_page_token,
             q=q
