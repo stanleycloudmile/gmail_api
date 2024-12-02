@@ -104,20 +104,19 @@ def get_message_details(service, msg_id):
 
 
 if __name__ == '__main__':
-    client_secret_file = 'token.json'
+    import json
+    with open('config.json', 'r') as file:
+        config = json.load(file)
+    client_secret_file = config['client_secret_file']
     API_SERVICE_NAME = 'gmail'
     API_VERSION = 'v1'
     SCOPES = ['https://mail.google.com/']
-    max_result = 500
+    max_result = config['max_result']
 
-    start_date = '2024-11-25'
-    end_date = '2024-12-05'
-    sender = "milelync.com"
-    query = f"from:{sender} after:{start_date} before:{end_date}"
-
+    query = config['query']
     service = create_service(client_secret_file, API_SERVICE_NAME, API_VERSION, SCOPES)
     messages = get_email_messages(service, max_results=max_result, q=query)
-    
+
     print(f"total count: {len(messages)}")
 
     for msg in messages:
